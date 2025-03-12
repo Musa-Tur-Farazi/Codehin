@@ -1,0 +1,100 @@
+import HeaderProfileBtn from "@/app/editor/_components/HeaderProfileBtn";
+import { SignedOut } from "@clerk/nextjs";
+import { Blocks, Code2, Settings, Sparkles } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+
+function NavigationHeader() {
+  return (
+
+    <div className="sticky top-0 z-50 w-full border-b border-gray-800/50 bg-gray backdrop-blur-xl backdrop-saturate-150">
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5" />
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="relative h-20 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group relative">
+              {/* logo hover effect */}
+              <div
+                className="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg opacity-0 
+              group-hover:opacity-100 transition-all duration-500 blur-xl"
+              />
+
+              {/*Logo */}
+              <div className="relative">
+                <span
+                  className="block text-lg font-semibold bg-gradient-to-r
+                  from-blue-400 via-blue-300 to-purple-400 text-transparent bg-clip-text">
+                  <Image
+                    src="/logo4.png"
+                    alt="Codehin"
+                    className="rounded-lg object-cover"
+                    width={116}
+                    height={116}
+                  />
+
+                </span>
+              </div>
+            </Link>
+
+            {/* snippets Link */}
+            {/* <Link
+              href="/snippets"
+              className="relative group flex items-center gap-2 text-gray-300
+              hover:border-blue-500/50 transition-all duration-300 shadow-lg overflow-hidden"
+            >
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/10 
+              to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+              />
+              <span className="flex gap-1 text-lg font-semibold font-sans relative z-10 group-hover:text-white transition-colors 
+              shadow-lg bg-gradient-to-r from-blue-800/10 to-purple-800/10 border border-blue-500/10 rounded-lg px-4 py-2">
+              <Code2 className="py-2group-hover:rotate-3 transition-transform" />
+                Snippets
+              </span>
+            </Link> */}
+            {/*execute link */}
+            <Link
+              href="/editor"
+              className="relative group flex items-center gap-2 text-gray-300 
+              hover:border-blue-500/50 border-rounded transition-all duration-300 shadow-lg overflow-hidden"
+            >
+              <div
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/10 
+              to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"
+              />
+                <span className="flex gap-1 text-lg font-semibold font-sans relative z-10 group-hover:text-white  transition-colors shadow-lg bg-gradient-to-r from-blue-800/10 to-purple-800/10 border border-blue-500/10 rounded-lg px-4 py-2">
+              <Settings className="w-5 group-hover:rotate-3 transition-transform" />
+                Execute your code
+                </span>
+            </Link>
+
+          </div>
+
+          {/* right rection */}
+          <div className="flex items-center gap-4">
+            <SignedOut>
+              <Link
+                href="/pricing"
+                className="flex items-center gap-2 px-4 py-1.5 rounded-lg border border-amber-500/20
+                 hover:border-amber-500/40 bg-gradient-to-r from-amber-500/10 
+                to-orange-500/10 hover:from-amber-500/20 hover:to-orange-500/20 transition-all 
+                duration-300"
+              >
+                <Sparkles className="w-4 h-4 text-amber-400 hover:text-amber-300" />
+                <span className="text-sm font-medium text-amber-400/90 hover:text-amber-300">
+                  Pro
+                </span>
+              </Link>
+            </SignedOut>
+
+            {/* profile button */}
+            <HeaderProfileBtn />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default NavigationHeader;
